@@ -88,6 +88,12 @@ class Produit
 		return static::$manager->find($id);
 	}
 
+	public static function all() : Array
+	{
+		static::$manager = new ProduitManager(DB::mysql_connector());
+		return static::$manager->all();
+	}
+
 	/* Accesseurs */
 	public function getNom() : string
 	{

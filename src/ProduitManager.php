@@ -86,4 +86,30 @@ class ProduitManager
 		}
 	}
 
+
+	/**
+	 * Methode pour recuperer tous les articles en BD
+	 *
+	 * @return array
+	 **/
+	public function all() : Array
+	{
+		$sql = "SELECT * FROM produits ;";
+
+		try {
+			$stmt = $this->db->query($sql);
+			$data = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+			$produits = [];
+
+			foreach ($data as $produit) {
+				$produits[] = new Produit($produit->nom, (int) $produit->prix);
+			}
+		} catch (Exception $e) {
+			echo $e->getMessage();
+		}
+
+		return $produits;
+	}
+
 }

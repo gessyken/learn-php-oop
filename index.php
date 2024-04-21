@@ -8,7 +8,7 @@ $data = [
     'prix' => 50000
 ];
 
-$produit = App\Produit::find(1);
+$produits = App\Produit::all(1);
 
 
-echo $produit;
+dd($produits);
